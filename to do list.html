@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple To-Do List</title>
+<style>
+body{font-family: Arial; background: #f2f2f2; text-align:center;}
+.box{background:white; width:400px; margin:50px auto; padding:20px; border-radius:10px;}
+input{padding:8px; width:65%;}
+button{padding:8px 12px; cursor:pointer;}
+li{list-style:none; background:#eee; margin:8px 0; padding:8px; border-radius:5px; display:flex; justify-content:space-between;}
+.done{text-decoration:line-through; color:gray;}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h3>My To-Do List</h3>
+<input type="text" id="task" placeholder="Enter task">
+<button onclick="add()">Add</button>
+<ul id="list"></ul>
+<p id="count"></p>
+</div>
+
+<script>
+let tasks = [];
+
+function add(){
+  let t = document.getElementById("task").value;
+  if(t=="") return;
+  tasks.push(t);
+  document.getElementById("task").value="";
+  show();
+}
+
+function show(){
+  let ul = document.getElementById("list");
+  ul.innerHTML="";
+  for(let i=0; i<tasks.length; i++){
+    ul.innerHTML += `<li>
+      <span onclick="complete(this)">${tasks[i]}</span>
+      <span>
+        <button onclick="edit(${i})">Edit</button>
+        <button onclick="removeTask(${i})">Delete</button>
+      </span>
+    </li>`;
+  }
+  document.getElementById("count").innerText = "Total Tasks: " + tasks.length;
+}
+
+function removeTask(i){
+  tasks.splice(i,1);
+  show();
+}
+
+function edit(i){
+  let newTask = prompt("Edit Task", tasks[i]);
+  if(newTask){
+    tasks[i]=newTask;
+    show();
+  }
+}
+
+function complete(el){
+  el.classList.toggle("done");
+}
+</script>
+
+</body>
+</html>

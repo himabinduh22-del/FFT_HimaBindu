@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Result Dashboard</title>
+<style>
+body{font-family:Arial; padding:20px; background:#f5f5f5;}
+.box{background:white; padding:15px; border-radius:8px; width:350px; margin:auto;}
+input{width:90%; padding:8px; margin:5px 0;}
+button{width:95%; padding:10px; background:blue; color:white; border:none; margin-top:10px;}
+#result{margin-top:15px; background:#e8f5e9; padding:10px; border-radius:8px;}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Student Result</h2>
+<input type="text" id="name" placeholder="Student Name">
+<input type="number" id="m1" placeholder="Maths Marks">
+<input type="number" id="m2" placeholder="Science Marks">
+<input type="number" id="m3" placeholder="English Marks">
+<button onclick="showResult()">Show Result</button>
+
+<div id="result"></div>
+</div>
+
+<script>
+function showResult(){
+ let name = document.getElementById('name').value;
+ let m1 = Number(document.getElementById('m1').value);
+ let m2 = Number(document.getElementById('m2').value);
+ let m3 = Number(document.getElementById('m3').value);
+
+ let total = m1+m2+m3;
+ let avg = total/3;
+ let per = (total/300)*100;
+
+ let grade = per>=80 ? "A" : per>=60 ? "B" : per>=35 ? "C" : "D";
+ let status = (m1>=35 && m2>=35 && m3>=35) ? "Pass" : "Fail";
+
+ document.getElementById('result').innerHTML = `
+   <b>Name:</b> ${name}<br>
+   <b>Total:</b> ${total}<br>
+   <b>Average:</b> ${avg.toFixed(1)}<br>
+   <b>Percentage:</b> ${per.toFixed(1)}%<br>
+   <b>Grade:</b> ${grade}<br>
+   <b>Status:</b> ${status}
+ `;
+}
+</script>
+
+</body>
+</html>

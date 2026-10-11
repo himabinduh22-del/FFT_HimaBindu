@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile card</title>
+    <style> button{
+        transition: 1s;
+    }
+    button:hover{
+        transform: scale(1,7);
+    }
+        </style>
+</head>
+<body>
+    <h1>profile card</h1>
+    <p>name:bindu</p>
+    <p>college:aliance</p>
+    <p>email:himabindu</p>
+    <button>contact</button> <br><br>
+
+
+    <input type="text" name="n1" id="i1">
+<br><br>
+<input type="text" name="n2" id="i2"><br><br>
+<button onclick="check()">check</button>
+<p id="para">result:</p><br><br>
+
+
+<script>
+
+
+
+    function check(){
+let n1=(document.getElementById('i1').value);
+let n2=(document.getElementById('i2').value);
+//let sum = n1+2;
+if(n2>=18){
+    document.getElementById('para').innerHTML = "ur eligible";
+}else{
+    document.getElementById('para').innerHTML = "ur not eligible";
+}
+
+    }
+
+    //normal functions
+    let a = 10;
+    let b=20;
+    function sum(){
+        document.write("sum of:"+(a+b))
+    }
+
+    //parameter with 
+</script>
+</body>
+</html>
